@@ -1,0 +1,4 @@
+=link_to 'Dodaj artykuł', new_document_path, class: "btn btn-primary "
+
+-@documents.each do |document| 
+	= render :partial => "tr", locals: {document: document}

@@ -1,0 +1,21 @@
+h1 Listing dziedzinas
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @dziedzinas.each do |dziedzina|
+      tr
+        td = dziedzina.name
+        td = link_to 'Show', dziedzina
+        td = link_to 'Edit', edit_dziedzina_path(dziedzina)
+        td = link_to 'Destroy', dziedzina, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Dziedzina', new_dziedzina_path

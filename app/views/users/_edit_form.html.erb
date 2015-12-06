@@ -1,0 +1,21 @@
+<%= simple_form_for @user do |f| %>
+ <%= f.error_notification %> 
+
+  <div class="form-inputs">
+    <%= f.input :recenzent, label: 'Recenzent' %>
+     <%= f.input :Redaktor, label: 'redaktor' %>
+    <% if current_user.admin? && @user.id != current_user.id %>
+      <%= f.input :admin, label: 'Czy admin' %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Zapisz" %>
+    <span class="or">lub</span>
+    <% if params[:id].present? %>
+      <%= link_to "Wróć", users_path, :class => "btn btn-default" %>
+      <% else %>
+      <%= link_to "Wróć", show_profile_users_path, :class => "btn btn-default" %>
+    <% end %>
+  </div>
+<% end %>

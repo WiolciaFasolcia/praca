@@ -1,0 +1,17 @@
+
+table
+  thead
+
+	tr
+      th Nazwa
+      th Data
+      th dziedzina
+      th
+  tbody
+    - @documents.each do |document|
+	tr
+  		td = document.name 
+  		td = document.date 
+  		/td = document.dziedzina.name
+ 		td = image_tag document.url
+  		td = link_to 'Usuń', document_path(document), :class => 'btn btn-primary', method: :delete, data: { confirm: 'Czy jestes pewien?'}

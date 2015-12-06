@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projekt</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+  Jesteś zalogowany jako <strong><%= current_user.email %></strong>.
+  <ul class="nav navbar-nav">
+  <% if can? :create, :user %>
+  <li ><a href="#"></a></li>
+	<li ><a href="#"><%= link_to "Lista użytkowników", users_path, :class => 'navbar-link' %></a></li>
+  <li ><a href="#"><%= link_to "Lista dziedzin", dziedzinas_path, :class => 'navbar-link' %></a></li>
+  <% end %>
+<li ><a href="#"><%= link_to "Lista dokumentów", documents_path, :class => 'navbar-link' %></a></li>
+<li><a href="#"><%= link_to "Profil", show_profile_users_path, :class => 'navbar-link' %></a></li>
+<li><a href="#"><%= link_to "Wyloguj", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></a></li>
+</ul>
+<% else %>
+  <%= link_to "Rejestracja", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Zaloguj", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+
+
+<%= yield %>
+</body>
+</html>

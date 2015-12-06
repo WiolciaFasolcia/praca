@@ -1,0 +1,13 @@
+= simple_form_for :document, :url => {:action => :create} do |f|
+	= f.error_notification 
+	.form-inputs
+  	= f.input :name, required: true, :autofocus => true, :as => :string , label: 'Nazwa'
+    = f.input  :date, required: true, as: :hidden,  label: 'Data',input_html: { class: 'date' } 
+    = f.input :dziedzina_id, :as => :select, collection: Dziedzina.all 
+    = f.input :user_id, :as => :select, collection: User.all
+    = f.file_field :url, label: "Plik"
+    br
+	form-actions
+  	= f.button :submit, "Zapisz"
+    span.or lub
+    = link_to "Wróć", :back, :class => "btn btn-default"

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imie:</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>Nazwisko:</strong>
+  <%= @user.surname %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Dziedzina:</strong>
+  <%= @user.dziedzina_id %>
+</p>
+<p>
+  <strong>Recenzent:</strong>
+  <%= @user.recenzent? %>
+</p>
+<p>
+  <strong>Redaktor:</strong>
+  <%= @user.Redaktor? %>
+</p>
+<p>
+  <strong>Admin:</strong>
+  <%= @user.admin? %>
+</p>
+
+<td><%= link_to 'Edytuj', edit_profile_users_path %></td>
+
+<%= link_to 'Cofnij', users_path, :class => 'btn btn-primary' %>

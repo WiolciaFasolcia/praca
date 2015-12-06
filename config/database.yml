@@ -1,0 +1,8 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: praca1
+  pool: 5
+  username: root
+  password: za
+  host: localhost

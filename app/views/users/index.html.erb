@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Cofnij', users_path, :class => 'btn btn-primary' %>
+<%if can? :edit, :user%>
+<h1>Lista użytkowników</h1>
+
+<table class="table table-striped">
+   <thead>
+     <tr>
+       <th>Email</th>
+       <th>Admin</th>
+       <th>Recenzent</th>
+       <th>Redakt</th>
+     </tr>
+   </thead>
+
+ <tbody>
+   <% @users.each do |user| %>
+     <tr>
+       <td><%= user.email %></td>
+       <td><%= user.admin? %></td>
+       <td><%= user.recenzent? %></td>
+       <td><%= user.Redaktor? %></td>
+      <td><%if can? :edit, :user%><%= link_to 'Edytuj', edit_user_path(user), :class => 'btn btn-primary' %><% end %></td>
+        <td><%if can? :edit, :user%><%= link_to 'Usuń', user_path(user), :class => 'btn btn-primary', method: :delete, data: { confirm: 'Czy jestes pewien?' } %><% end %></td>
+     </tr>
+   <% end %>
+ </tbody>
+</table>
+
+<br>
+<% end %>
